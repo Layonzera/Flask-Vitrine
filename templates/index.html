@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitrini</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="borda">
+                <span class="addProduct">Adicionar produto:</span>
+                <form action="/create" method="POST">
+                    <input name="title" placeholder="Produto">
+                    <input name="price" type="number" placeholder="Preço">
+                    <button type="submit" > 🏄🏻‍♂️ </button>
+                </form>
+            </div>
+        </header>
+        <ul class="content">
+            {% for showcase in vitrini %}
+                <li class="card">
+                    <form action="/update/{{ showcase.id }}" method="POST">
+                        <input name="title" value="{{ showcase.title }}">
+                        <input name="price" value="{{ showcase.price }}">
+                        <button type="submit">🤙🏼</button>
+                        <a href="/delete/{{ showcase.id }}">
+                            ❌
+                        </a>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
