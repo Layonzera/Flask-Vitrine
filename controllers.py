@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, session
+from flask import render_template, request, redirect, session, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from models import Vitrini, User, db
 
@@ -19,6 +19,7 @@ class VitriniController():
         newVitrini = Vitrini(title=title, price=price, user_id=user_id)
         db.session.add(newVitrini)
         db.session.commit()
+        flash('Criado com sucesso!', 'success')
         return redirect('/')
     
     def delete(id):
@@ -27,6 +28,7 @@ class VitriniController():
         vitrini = Vitrini.query.filter_by(id=id).first()
         db.session.delete(vitrini)
         db.session.commit()
+        flash('Deletado com sucesso!', 'success')
         return redirect('/')
     
     def update(id):
@@ -38,6 +40,7 @@ class VitriniController():
         vitrini.title = title
         vitrini.price = price
         db.session.commit()
+        flash('Editado com sucesso!', 'success')
         return redirect("/")
 
 class UserController():
@@ -49,10 +52,13 @@ class UserController():
         password = request.form.get('password')
         user = User.query.filter_by(email=email).first()
         if not user:
+            flash('E-mail não encontrado!', 'error')
             return redirect('/login')
         if not check_password_hash(user.password, password):
+            flash('Senha incorreta!', 'error')
             return redirect('/login')
         session['user_id'] = user.id
+        flash(f'Bem vindo, {user.name}!', 'success')
         return redirect('/')
     
     def register():
@@ -64,6 +70,7 @@ class UserController():
         password = request.form.get('password')
         user = User.query.filter_by(email=email).first()
         if user:
+            flash('E-mail já existe!', 'error')
             return redirect('/register')
         new_user = User(
             name=name,
@@ -72,6 +79,7 @@ class UserController():
         )
         db.session.add(new_user)
         db.session.commit()
+        flash(f'Usuário criado com sucesso!', 'success')
         return redirect('/login')
     
     def logout():
