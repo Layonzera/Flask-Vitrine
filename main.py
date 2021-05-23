@@ -19,34 +19,34 @@ def login():
 
 @app.route('/signin', methods=['POST'])
 def signin():
-    return UserController.login()
+    return UserController.signin()
 
 @app.route('/register')
 def register():
-    return UserController.login()
+    return UserController.register()
 
 @app.route('/signup', methods=['POST'])
 def signup():
-    return UserController.login()
+    return UserController.signup()
 
 @app.route('/logout')
 def logout():
-    return UserController.login()
+    return UserController.logout()
 
 @app.route('/create', methods=['POST'])
 def create():
-    return VitriniController.index()
+    return VitriniController.create()
 
 @app.route('/delete/<int:id>')
 def delete(id):
-    return VitriniController.index()
+    return VitriniController.delete()
 
 @app.route("/update/<int:id>", methods=['POST'])
 def update(id):
-    return VitriniController.index()
+    return VitriniController.update()
 
 with app.app_context():
- db.create_all()
+    db.create_all()
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

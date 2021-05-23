@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vitrini</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
 </head>
 <body>
     <div class="container">
         <header>
             <div class="borda">
-                <span class="addProduct">Adicionar produto:</span>
+                <span class="addProduct">S H O W C A S E</span>
                 <form action="/create" method="POST">
                     <input name="title" placeholder="Produto">
                     <input name="price" type="number" placeholder="Preço">
@@ -26,9 +25,7 @@
                         <input name="title" value="{{ showcase.title }}">
                         <input name="price" value="{{ showcase.price }}">
                         <button type="submit">🤙🏼</button>
-                        <a href="/delete/{{ showcase.id }}">
-                            ❌
-                        </a>
+                        <a href="/delete/{{ showcase.id }}">❌</a>
                     </form>
                 </li>
             {% endfor %}
