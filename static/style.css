@@ -6,6 +6,7 @@
 body {
     min-height: 100vh;
     background-color: #e0fbfc;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .container {
@@ -90,6 +91,14 @@ a {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+}
+
+.img-bg {
+    min-height: 100vh;
+    background-color: black;
+    background-image: url('lr.jpg');
+    background-position: center;
+    background-size: cover;
 }
 
 .auth-container {

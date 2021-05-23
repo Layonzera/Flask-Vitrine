@@ -7,15 +7,17 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="flex-container">
-        <div class="auth-container">
-            <h1>Login</h1>
-            <form action="/signin" method="POST">
-                <input type="email" name="email" placeholder="E-mail">
-                <input type="password" name="password" placeholder="Senha">
-                <button type="submit" class="btn bg-blue">Entrar</button>
-                <a href="/register" class="text-blue">Cadastrar</a>
-            </form>
+    <div class="img-bg">
+        <div class="flex-container">
+            <div class="auth-container">
+                <h1>Login</h1>
+                <form action="/signin" method="POST">
+                    <input type="email" name="email" placeholder="E-mail">
+                    <input type="password" name="password" placeholder="Senha">
+                    <button type="submit" class="btn bg-blue">Entrar</button>
+                    <a href="/register" class="text-blue">Cadastrar</a>
+                </form>
+            </div>
         </div>
     </div>
 </body>
